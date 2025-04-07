@@ -2,13 +2,20 @@ import React, { useState, useRef, useEffect } from 'react'
 import Product from './Product'
 import { motion } from 'framer-motion'
 
+// Import video assets directly
+import arqitelVideo from '../assets/arqitel-D3jJRwFT.mp4'
+import rainfallVideo from '../assets/rainfall-BZC7HG1T.mp4'
+import ttrVideo from '../assets/ttr-CUQdDHBj.mp4'
+import yahooVideo from '../assets/yahoo-D7WzLbum.mp4'
+import yirVideo from '../assets/yir-BzJiRbqx.mp4'
+
 function Products() {
     const data=[
-        {title:"Arqitel",description:"With a continuous 3D animation, we showcase Arqitel approach and show how migration data translates into real estate.",live:true,case:false},
-        {title:"TTR",description:"We've created an interactive site using generative AI to allow users to engage with our thinking about Ai, industry trends and design.",live:true,case:false},
-        {title:"YIR 2024",description:"Our second year was filled with great events, exciting projects, awards and amazing people - so we made another showcase to celebrate.",live:true,case:true},
-        {title:"Yahoo!",description:"We enhanced the New York Fashion Week, by creating a fully digital AR fashion experience for Yahoo and Maisie Wilen, featuring holographic 3D models and an integrated web shop.",live:true,case:true},
-        {title:"Rainfall",description:"We crafted a website for Rainfall Ventures, developing prototypes and custom code that ultimately allows their team to update content regularly and with ease.",live:true,case:true},
+        {title:"Arqitel",description:"With a continuous 3D animation, we showcase Arqitel approach and show how migration data translates into real estate.",live:true,case:false, video: arqitelVideo},
+        {title:"TTR",description:"We've created an interactive site using generative AI to allow users to engage with our thinking about Ai, industry trends and design.",live:true,case:false, video: ttrVideo},
+        {title:"YIR 2024",description:"Our second year was filled with great events, exciting projects, awards and amazing people - so we made another showcase to celebrate.",live:true,case:true, video: yirVideo},
+        {title:"Yahoo!",description:"We enhanced the New York Fashion Week, by creating a fully digital AR fashion experience for Yahoo and Maisie Wilen, featuring holographic 3D models and an integrated web shop.",live:true,case:true, video: yahooVideo},
+        {title:"Rainfall",description:"We crafted a website for Rainfall Ventures, developing prototypes and custom code that ultimately allows their team to update content regularly and with ease.",live:true,case:true, video: rainfallVideo},
     ]
    const[pos,setpos]=useState(0);
    
@@ -65,17 +72,18 @@ function Products() {
             transition={{ease:[0.76, 0, 0.24, 1],duration:0.6}}
            className='absolute w-[25rem] left-[45%]  h-[19rem]   overflow-hidden '>
 
-          <motion.div animate={{y:-pos+'rem'}} 
+          <motion.div  animate={{y:-pos+'rem'}}
            transition={{ease:[0.76, 0, 0.24, 1],duration:0.5}}
-          className=' w-full h-full  '>
+          className=' w-full h-full  scene'>
                   <video 
                     ref={el => videoRefs.current[0] = el} 
-                    src="src/assets/arqitel-D3jJRwFT.mp4" 
+                    src={data[0].video}
                     loop 
                     muted
                     playsInline
                     preload="auto"
                     className='w-full h-full rounded-3xl'
+                    onError={(e) => console.error("Video error:", e)}
                   ></video>
           </motion.div>
 
@@ -84,12 +92,13 @@ function Products() {
           className=' w-full h-full  scene'>
                      <video 
                        ref={el => videoRefs.current[1] = el}
-                       src="src/assets/rainfall-BZC7HG1T.mp4" 
+                       src={data[4].video}
                        loop 
                        muted
                        playsInline
                        preload="auto" 
                        className='w-full h-full rounded-3xl'
+                       onError={(e) => console.error("Video error:", e)}
                      ></video>
           </motion.div>
 
@@ -98,12 +107,13 @@ function Products() {
           className=' w-full h-full  scene'>
                      <video 
                        ref={el => videoRefs.current[2] = el}
-                       src="src/assets/ttr-CUQdDHBj.mp4" 
+                       src={data[1].video}
                        loop 
                        muted
                        playsInline
                        preload="auto"
                        className='w-full h-full rounded-3xl'
+                       onError={(e) => console.error("Video error:", e)}
                      ></video>
           </motion.div>
 
@@ -112,12 +122,13 @@ function Products() {
           className=' w-full h-full  scene'>
                           <video 
                             ref={el => videoRefs.current[3] = el}
-                            src="src/assets/yahoo-D7WzLbum.mp4" 
+                            src={data[3].video}
                             loop 
                             muted
                             playsInline
                             preload="auto"
                             className='w-full h-full rounded-3xl'
+                            onError={(e) => console.error("Video error:", e)}
                           ></video>
           </motion.div>
 
@@ -126,12 +137,13 @@ function Products() {
           className=' w-full h-full  scene'>
                               <video 
                                 ref={el => videoRefs.current[4] = el}
-                                src="src/assets/yir-BzJiRbqx.mp4" 
+                                src={data[2].video}
                                 loop 
                                 muted
                                 playsInline
                                 preload="auto"
                                 className='w-full h-full rounded-3xl'
+                                onError={(e) => console.error("Video error:", e)}
                               ></video>
           </motion.div>
           
